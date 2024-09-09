@@ -4,6 +4,8 @@ import openai
 import time
 import os
 from src.homepage import home
+from src.My_Projects import myProjects
+from src.My_Projects import project_Demonstration
 
 st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
 
@@ -71,15 +73,19 @@ def display_chatbot():
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 
-    def main():
+def main():
     with st.sidebar:
         st.title("AI Integration With Argiculture")
-    sections = [":house: Home", ":robot_face: ChatBot"]
+    sections = [":house: Home", ":robot_face: ChatBot", ":film_projector: My Projects", "Project Demonstration"]
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
         home()
     if selected_section == ":robot_face: ChatBot":
         display_chatbot()
+    if selected_section == ":film_projector: My Projects":
+        myProjects()
+    if selected_section == "Project Demonstration":
+        project_Demonstration
     
 
 if __name__ == "__main__":
