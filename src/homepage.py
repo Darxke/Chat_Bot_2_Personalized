@@ -1,8 +1,6 @@
 #homepage
 import streamlit as st
-def home():
-    st.title('Gardener AI')
-def introduction():
+def home(): 
     st.header(":one: Introduction")
     st.subheader(":one: Lesson plan for beginner coders")
     st.write("Streamlit is a Python libary that makes it easy to create web apps.")
