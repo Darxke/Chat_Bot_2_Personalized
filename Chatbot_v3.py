@@ -5,7 +5,7 @@ import time
 import os
 from src.homepage import home
 from src.My_Projects import myProjects
-from src.My_Projects import project_Demonstration
+from src.Project_Demonstration import project_Demonstration
 
 st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
 
@@ -85,7 +85,7 @@ def main():
     if selected_section == ":film_projector: My Projects":
         myProjects()
     if selected_section == "Project Demonstration":
-        project_Demonstration
+        project_Demonstration()
     
 
 if __name__ == "__main__":
