@@ -6,6 +6,7 @@ import os
 from src.homepage import home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
+import base64
 
 st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
 
@@ -73,9 +74,28 @@ def display_chatbot():
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 
-def main():
+def main(): 
     with st.sidebar:
         st.title("AI Integration With Argiculture")
+        main_bg = "sample.jpg"
+        main_bg_ext = "jpg"
+
+        side_bg = "sample.jpg"
+        side_bg_ext = "jpg"
+
+        st.markdown(
+            f"""
+            <style>
+            .reportview-container {{
+                background: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()})
+            }}
+           .sidebar .sidebar-content {{
+                background: url(data:image/{side_bg_ext};base64,{base64.b64encode(open(side_bg, "rb").read()).decode()})
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
     sections = [":house: Home", ":robot_face: ChatBot", ":film_projector: My Projects", "Project Demonstration"]
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
