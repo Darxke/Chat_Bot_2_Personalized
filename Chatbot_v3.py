@@ -6,10 +6,9 @@ import os
 from src.homepage import home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
-from Css_Testing import add_bg_from_local
+from Css_Testing import add_bg_from_local, bg_sideBar
 import base64
 
-add_bg_from_local('./images/sample-city-park-400x300.jpg')
 #st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
 
 
@@ -79,13 +78,16 @@ def display_chatbot():
 
 def main(): 
     with st.sidebar:
-        st.title("AI Integration With Argiculture")
+        st.title("Coding Class Presentation")
        
     sections = [":house: Home", ":robot_face: ChatBot", ":film_projector: My Projects", "Project Demonstration"]
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
         home()
+        add_bg_from_local('./images/rocks.jpg')
+        bg_sideBar()
     if selected_section == ":robot_face: ChatBot":
+        st.markdown("<h1 style='text-align: center; color: black;'>🤖 ChatBot AI</h1>", unsafe_allow_html=True)
         display_chatbot()
     if selected_section == ":film_projector: My Projects":
         myProjects()

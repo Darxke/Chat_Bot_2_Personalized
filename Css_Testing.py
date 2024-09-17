@@ -15,5 +15,16 @@ def add_bg_from_local(image_file):
         """,
         unsafe_allow_html=True
     )
+def bg_sideBar():
+    # Define your custom CSS
+    custom_css = """
+    <style>
+    [data-testid=stSidebar] {
+        background-color: #d4c3c4;
+    }
+    </style>
+    """
 
-add_bg_from_local('./images/sample-city-park-400x300.jpg')
+    # Apply the custom CSS
+    st.markdown(custom_css, unsafe_allow_html=True)
+
