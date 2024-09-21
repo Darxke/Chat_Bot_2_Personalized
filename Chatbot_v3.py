@@ -84,7 +84,7 @@ def main():
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
         home()
-        add_bg_from_local('./images/rocks.jpg')
+        add_bg_from_l   ocal('./images/rocks.jpg')
         bg_sideBar()
     if selected_section == ":robot_face: ChatBot":
         st.markdown("<h1 style='text-align: center; color: black;'>🤖 ChatBot AI</h1>", unsafe_allow_html=True)
