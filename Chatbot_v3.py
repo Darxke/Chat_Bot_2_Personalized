@@ -7,6 +7,7 @@ from src.homepage import home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
 from Css_Testing import add_bg_from_local, bg_sideBar
+from Streamlit_Extras import coffee, rainEmojis
 import base64
 
 #st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
@@ -84,7 +85,9 @@ def main():
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
         home()
-        add_bg_from_l   ocal('./images/rocks.jpg')
+        rainEmojis()
+        coffee()
+       # add_bg_from_local('./images/rocks.jpg')
         bg_sideBar()
     if selected_section == ":robot_face: ChatBot":
         st.markdown("<h1 style='text-align: center; color: black;'>🤖 ChatBot AI</h1>", unsafe_allow_html=True)
