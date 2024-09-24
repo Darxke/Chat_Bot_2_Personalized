@@ -3,10 +3,11 @@ from streamlit_extras.buy_me_a_coffee import button
 from streamlit_extras.let_it_rain import rain
 def coffee():
     button(username="fake-username", floating=False, width=221)
-def rainEmojis():
+def rainEmojis(emoji):
     rain(
-        emoji="✅",
-        font_size=54,
+        emoji=emoji,
+        font_size=50,
         falling_speed=1,
-        animation_length="infinite",
+        animation_length="short",
     )
+

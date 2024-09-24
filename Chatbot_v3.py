@@ -3,7 +3,7 @@ import streamlit as st
 import openai
 import time
 import os
-from src.homepage import home
+from src.homepage import home, bg_home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
 from Css_Testing import add_bg_from_local, bg_sideBar
@@ -17,7 +17,8 @@ ASSISTANT_ID='asst_ebiN65dJm6mNDf0ik7v57cwi'
 THREAD_ID='thread_dk7z8qsxikx1z77zezYfDn2l'
 
 api_key = st.secrets.get('OPENAI_API_KEY') or os.environ.get('OPENAI_API_KEY')
-
+if "bg_change" not in st.session_state:
+    st.session_state.bg_change = False
 if not api_key:
     st.error('OPENAI API Key was not found :(')
     st.stop()
@@ -77,22 +78,46 @@ def display_chatbot():
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 
-def main(): 
+def main():
+    bg_change = False
+    counter = 0
     with st.sidebar:
+        with st.sidebar:
+            if st.button("Deploy Change"):
+                counter+=1
+                if counter % 2 == 0:
+                    bg_change = False
+                else:
+                    bg_change = True
         st.title("Coding Class Presentation")
-       
     sections = [":house: Home", ":robot_face: ChatBot", ":film_projector: My Projects", "Project Demonstration"]
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
         home()
-        rainEmojis()
-        coffee()
-       # add_bg_from_local('./images/rocks.jpg')
-        bg_sideBar()
+        if bg_change:
+            bg_home()
+        with st.sidebar:
+            if st.button("Secret"):
+                bg_home()
+                rainEmojis("🏨")
+            coffee()
+
     if selected_section == ":robot_face: ChatBot":
         st.markdown("<h1 style='text-align: center; color: black;'>🤖 ChatBot AI</h1>", unsafe_allow_html=True)
+        with st.sidebar:
+            if st.button("Secret"):
+                rainEmojis("🤖")
+                bg_sideBar("#cdd67c")
+                add_bg_from_local('./images/ligth color.jpg')
+        if bg_change:
+            bg_sideBar("#cdd67c")
+            add_bg_from_local('./images/ligth color.jpg')
         display_chatbot()
     if selected_section == ":film_projector: My Projects":
+        if bg_change:
+            add_bg_from_local('./images/Spotlight.jpg')
+            bg_sideBar("#000000")
+
         myProjects()
     if selected_section == "Project Demonstration":
         project_Demonstration()

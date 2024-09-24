@@ -15,13 +15,13 @@ def add_bg_from_local(image_file):
         """,
         unsafe_allow_html=True
     )
-def bg_sideBar():
+def bg_sideBar(color):
     # Define your custom CSS
-    custom_css = """
+    custom_css = f"""
     <style>
-    [data-testid=stSidebar] {
-        background-color: #d4c3c4;
-    }
+    [data-testid=stSidebar] {{
+        background-color: {color};
+    }}
     </style>
     """
 
