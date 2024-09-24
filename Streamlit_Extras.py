@@ -5,19 +5,6 @@ def coffee():
     button = """
     <script type="text/javascript" src="https://buymeacoffee.com/shixuanzhuk" data-name="bmc-button" data-slug="adof6qkj3h" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
     """
-
-    st.markdown(
-        """
-        <style>
-            iframe[width="220"] {
-                position: fixed;
-                bottom: 60px;
-                right: 40px;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
 def rainEmojis(emoji):
     rain(
         emoji=emoji,
