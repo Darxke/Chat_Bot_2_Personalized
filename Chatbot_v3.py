@@ -7,7 +7,7 @@ from src.homepage import home, bg_home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
 from Css_Testing import add_bg_from_local, bg_sideBar
-from Streamlit_Extras import coffee, rainEmojis
+from Streamlit_Extras import coffee, rainEmojis, my_timeline
 import base64
 
 #st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
@@ -94,6 +94,7 @@ def main():
     selected_section = st.sidebar.radio("Topics", sections)
     if selected_section == ":house: Home":
         home()
+        my_timeline()
         if bg_change:
             bg_home()
         with st.sidebar:
@@ -114,6 +115,10 @@ def main():
             add_bg_from_local('./images/ligth color.jpg')
         display_chatbot()
     if selected_section == ":film_projector: My Projects":
+        with st.sidebar:
+            if st.button("Secret"):
+                add_bg_from_local('./images/Spotlight.jpg')
+                bg_sideBar("#000000")
         if bg_change:
             add_bg_from_local('./images/Spotlight.jpg')
             bg_sideBar("#000000")
