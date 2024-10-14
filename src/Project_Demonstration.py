@@ -63,4 +63,6 @@ def project_Demonstration():
         st.write("Roadrunner is a library used in FTC for precision. ")
         st.write("I can't really show you how it works because it is used for robotics so I will show an image on how a robot can move with roadrunner")
         st.write("The blue line is the path that the robot follows")
+        st.video("./images/robotgif.mp4",loop=True)
+        st.write("I made the gif by myself so it doesn't have high fps")
         

@@ -1,6 +1,6 @@
 #My Projects
 import streamlit as st
-from Streamlit_Extras import cardTab
+from util import cardTab,lottie
 def myProjects():
     st.header(":film_projector: My Projects")
     st.subheader("Here are some of my projects and a breif description")
@@ -13,4 +13,7 @@ def myProjects():
         cardTab("RoadRunner 2023", "https://github.com/Darxke/Roadrunner2023")
         cardTab("FTC_FIRST_DIVE", "https://github.com/Darxke/FTC_FIRST_DIVE")
         cardTab("PowerPlay", "https://github.com/Darxke/PowerPlay")
+        with st.sidebar:
+            lottie("https://lottie.host/51d76cdb-11ae-4e65-94cc-6ea85d204f39/bxx2mbHD0s.json")
+
 

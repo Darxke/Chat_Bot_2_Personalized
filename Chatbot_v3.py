@@ -7,7 +7,7 @@ from src.homepage import home, bg_home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
 from Css_Testing import add_bg_from_local, bg_sideBar
-from Streamlit_Extras import coffee, rainEmojis, my_timeline, cardTab, imageGen
+from util import coffee, rainEmojis, my_timeline, cardTab, imageGen, lottie
 from st_on_hover_tabs import on_hover_tabs
 import base64
 
@@ -101,7 +101,7 @@ def main():
         st.title("Coding Class Presentation")
     with st.sidebar:
         tabs = on_hover_tabs(tabName=["Home", "ChatBot", "My Projects", "Project Demonstration"],
-                             iconName=['home', 'money', 'camera', 'person'], default_choice=0)
+                             iconName=['home', 'chatbot', 'camera', 'person'], default_choice=0)
     if tabs == "Home":
         home()
         my_timeline()
@@ -111,6 +111,7 @@ def main():
             if st.button("Secret"):
                 bg_home()
                 rainEmojis("🏨")
+                lottie("https://lottie.host/196ddb8f-8c1e-4fa4-ad54-7475a53ccae1/Pls0SIUzel.json")
             coffee()
 
     if tabs == "ChatBot":
@@ -120,6 +121,8 @@ def main():
                 rainEmojis("🤖")
                 bg_sideBar("#cdd67c")
                 add_bg_from_local('./images/ligth color.jpg')
+                lottie("https://lottie.host/94c95a1d-e8e6-44ad-9457-cc03b47bdb6b/Lt1MX4XEEH.json")
+
         if bg_change:
             bg_sideBar("#cdd67c")
             add_bg_from_local('./images/ligth color.jpg')
@@ -129,6 +132,7 @@ def main():
             if st.button("Secret"):
                 add_bg_from_local('./images/Spotlight.jpg')
                 bg_sideBar("#000000")
+                lottie("https://lottie.host/05ba2cb6-6dac-4e2b-b18e-dcec8adff357/cN4cpyXRzG.json")
         if bg_change:
             add_bg_from_local('./images/Spotlight.jpg')
             bg_sideBar("#000000")

@@ -5,6 +5,7 @@ from streamlit.components.v1 import html
 from streamlit_timeline import st_timeline
 from streamlit_card import card
 from st_on_hover_tabs import on_hover_tabs
+from streamlit_lottie import st_lottie
 
 def coffee():
     with st.sidebar:
@@ -76,3 +77,5 @@ def imageGen(client, prompt):
 
     image_url = response.data[0].url
     st.image(image_url)
+def lottie(gif):
+    st_lottie(gif)

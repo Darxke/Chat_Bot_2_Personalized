@@ -7,7 +7,7 @@ from src.homepage import home, bg_home
 from src.My_Projects import myProjects
 from src.Project_Demonstration import project_Demonstration
 from Css_Testing import add_bg_from_local, bg_sideBar
-from Streamlit_Extras import coffee, rainEmojis, my_timeline, cardTab
+from util import coffee, rainEmojis, my_timeline, cardTab
 from st_on_hover_tabs import on_hover_tabs
 import base64
 
