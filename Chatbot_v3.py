@@ -65,16 +65,16 @@ def get_assistant_response(assistant_id, thread_id, user_input):
 
 def display_chatbot():
     for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
+        with st.chat_message(message["role"], avatar = get_avatar(message["role"])):
             st.markdown(message["content"])
 
     prompt = st.chat_input("Ask me anything! P.S. to create an image just say create an image")
     if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
+        with st.chat_message("user", avatar = get_avatar("user")):
             st.markdown(prompt)
 
-        with st.chat_message("assistant"):
+        with st.chat_message("assistant", avatar = get_avatar("assistant")):
             message_placeholder = st.empty()
             full_response = get_assistant_response(
                 ASSISTANT_ID,
@@ -83,7 +83,13 @@ def display_chatbot():
             )
             message_placeholder.markdown(full_response)
         st.session_state.messages.append({"role": "assistant", "content": full_response})
-
+def get_avatar(role):
+    if role == "user":
+        return "./images/orange.jpg"
+    elif role == "assistant":
+        return "./images/apple.png"
+    else:
+        return None
 
 def main():
     bg_change = False
@@ -92,7 +98,7 @@ def main():
 
     with st.sidebar:
         with st.sidebar:
-            if st.button("Deploy Change"):
+            if st.button("Add Background"):
                 counter += 1
                 if counter % 2 == 0:
                     bg_change = False
@@ -115,7 +121,7 @@ def main():
             coffee()
 
     if tabs == "ChatBot":
-        st.markdown("<h1 style='text-align: center; color: black;'>🤖 ChatBot AI</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: black;'>🤖 Farm AI</h1>", unsafe_allow_html=True)
         with st.sidebar:
             if st.button("Secret"):
                 rainEmojis("🤖")

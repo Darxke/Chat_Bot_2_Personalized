@@ -50,22 +50,42 @@ def my_timeline():
     st.write(timeline)
 
 
-def cardTab(title, url): # width, height, radius#
-    hasClicked = card(
+def cardTab(title, url,images): # width, height, radius#
+    # res = card(
+    #     title=title,
+    #     text="",
+    #     url=url,
+    #     image=images,
+    #     styles={
+    #         "card": {
+    #             "width": "100",#width
+    #             "height": "100",#height
+    #             "border-radius": "100"#radius
+    #         },
+    #         "filter": {
+    #             "background-color": "rgb(0, 0, 0)"  # <- make the image not dimmed anymore
+    #         }
+    #     }
+    # )
+    res = card(
         title=title,
         text="",
         url=url,
+        image="https://placekitten.com/500/500",
         styles={
             "card": {
-                "width": "5",#width
-                "height": "5",#height
-                "border-radius": "5"#radius
+                "width": "500px"    ,
+                "height": "100px",
+                "border-radius": "60px",
+                "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+
             },
             "filter": {
-                "background-color": "rgb(0, 0, 0)"  # <- make the image not dimmed anymore
+                "background-color": "rgb(0, 0, 0)"
             }
         }
     )
+
 def imageGen(client, prompt):
     response = client.images.generate(
         model="dall-e-3",
