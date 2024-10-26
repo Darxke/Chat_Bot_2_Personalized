@@ -15,6 +15,7 @@ def project_Demonstration():
     st.subheader("Time for some demonstration!")
     tab1, tab2, tab3 = st.tabs(["Shawn's Portfolio", "Chat_Bot_2_Personalized", "RoadRunner 2023"])
     with tab1:
+        st.write("This is a project about streamlit. Its a beginner guide for streamlit.")
         st.title("Intro to streamlit :dark_sunglasses:")
 
 

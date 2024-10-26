@@ -9,13 +9,14 @@ from src.Project_Demonstration import project_Demonstration
 from Css_Testing import add_bg_from_local, bg_sideBar
 from util import coffee, rainEmojis, my_timeline, cardTab, imageGen, lottie
 from st_on_hover_tabs import on_hover_tabs
+from pictures import img
 import base64
 
 # st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
 
 
 ASSISTANT_ID = 'asst_ebiN65dJm6mNDf0ik7v57cwi'
-THREAD_ID = 'thread_dk7z8qsxikx1z77zezYfDn2l'
+THREAD_ID = 'thread_PqACH6PLOh31JQvzuA5BNMRh'
 
 api_key = st.secrets.get('OPENAI_API_KEY') or os.environ.get('OPENAI_API_KEY')
 if "bg_change" not in st.session_state:
@@ -98,7 +99,8 @@ def main():
 
     with st.sidebar:
         with st.sidebar:
-            if st.button("Add Background"):
+            on = st.toggle(":orange[Add Background]")
+            if on:
                 counter += 1
                 if counter % 2 == 0:
                     bg_change = False
@@ -110,7 +112,9 @@ def main():
                              iconName=['home', 'chatbot', 'camera', 'person'], default_choice=0)
     if tabs == "Home":
         home()
-        my_timeline()
+        img()
+        with st.container(border=True):
+            my_timeline()
         if bg_change:
             bg_home()
         with st.sidebar:

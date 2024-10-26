@@ -71,7 +71,7 @@ def cardTab(title, url,images): # width, height, radius#
         title=title,
         text="",
         url=url,
-        image="https://placekitten.com/500/500",
+        image=images,
         styles={
             "card": {
                 "width": "500px"    ,
@@ -80,9 +80,9 @@ def cardTab(title, url,images): # width, height, radius#
                 "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
 
             },
-            "filter": {
-                "background-color": "rgb(0, 0, 0)"
-            }
+            # "filter": {
+            #     "background-color": "rgb(0, 0, 0)"
+            # }
         }
     )
 

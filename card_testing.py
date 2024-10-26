@@ -1,20 +1,15 @@
 from streamlit_card import card
+
+
+hasClicked = card(
+  title="Hello World!",
+  text="Some description",
+  image="./images/apples.png",
+  url="https://github.com/gamcoh/st-card"
+)
 import streamlit as st
 
-res = card(
-    title="Streamlit Card",
-    text="This is a test card",
-    image="https://placekitten.com/500/500",
-    styles={
-        "card": {
-            "width": "100px",
-            "height": "100px",
-            "border-radius": "60px",
-            "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+on = st.toggle("Activate feature")
 
-        },
-        "text": {
-            "font-family": "serif",
-        }
-    }
-)
+if on:
+    st.write("Feature activated!")
