@@ -1,40 +1,21 @@
-# Chat Bot V3
-import streamlit as st
-import openai
-import time
-import os
-import json
 from zoneinfo import ZoneInfo
 
-from src.homepage import home, bg_home
-from src.My_Projects import myProjects
-from src.Project_Demonstration import project_Demonstration
-from Css_Testing import add_bg_from_local, bg_sideBar
-from util import coffee, rainEmojis, my_timeline, cardTab, imageGen, lottie
-from st_on_hover_tabs import on_hover_tabs
-from pictures import img
-import base64
+import openai
+import streamlit as st
+import json
+import time
 from datetime import datetime
+import pytz
 
-
-# st.set_page_config(page_title='Farming AI', page_icon=':farmer:', layout = 'wide')
-
-
-ASSISTANT_ID = 'asst_ucpmCQJVYP8THv8xtiFivSxT'
-THREAD_ID = 'thread_jrsJhKlx2l2TCcR77MdxDBpy'
-
-api_key = st.secrets.get('OPENAI_API_KEY') or os.environ.get('OPENAI_API_KEY')
-if "bg_change" not in st.session_state:
-    st.session_state.bg_change = False
-if not api_key:
-    st.error('OPENAI API Key was not found :(')
-    st.stop()
+api_key = st.secrets.get('OPENAI_API_KEY')
 client = openai.OpenAI(api_key=api_key)
 
-# Main Chat interface
+ASSISTANT_ID = 'asst_ucpmCQJVYP8THv8xtiFivSxT'
+THREAD_ID = 'thread_Ydh01c39dyUnvKEaHlFPG1LJ'
 
 if 'messages' not in st.session_state:
     st.session_state.messages = []
+
 
 def get_current_temperature(location: str, unit: str) -> str:
     return f'75*{unit[0]}'
@@ -45,6 +26,7 @@ def get_time(location: str) -> str:
 
     current_time = datetime.now(tzinfo=str(zone))
     return str(current_time)
+
 
 def get_assistant_response(assistant_id, thread_id, user_input):
     try:
@@ -159,11 +141,17 @@ def get_assistant_response(assistant_id, thread_id, user_input):
         return 'I apologize, but I encountered an error. Please try again!'
 
 
+def main():
+    # Add title and description
+    st.title("🌤️ Weather Assistant")
+    st.markdown("*Ask me about the weather in any location!*")
 
-def display_chatbot():
+    # Display chat messages
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+
+        # Chat input
     if prompt := st.chat_input("Ask about the weather..."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
@@ -179,74 +167,7 @@ def display_chatbot():
                 )
             message_placeholder.markdown(full_response)
         st.session_state.messages.append({"role": "assistant", "content": full_response})
-def get_avatar(role):
-    if role == "user":
-        return "./images/orange.jpg"
-    elif role == "assistant":
-        return "./images/apple.png"
-    else:
-        return None
-
-def main():
-    bg_change = False
-    counter = 0
-    st.markdown('<style>' + open('./style.css').read() + '</style>', unsafe_allow_html=True)
-
-    with st.sidebar:
-        with st.sidebar:
-            on = st.toggle(":orange[Add Background]")
-            if on:
-                counter += 1
-                if counter % 2 == 0:
-                    bg_change = False
-                else:
-                    bg_change = True
-        st.title("Coding Class Presentation")
-    with st.sidebar:
-        tabs = on_hover_tabs(tabName=["Home", "ChatBot", "My Projects", "Project Demonstration"],
-                             iconName=['home', 'chatbot', 'camera', 'person'], default_choice=0)
-    if tabs == "Home":
-        home()
-        img()
-        with st.container(border=True):
-            my_timeline()
-        if bg_change:
-            bg_home()
-        with st.sidebar:
-            if st.button("Secret"):
-                bg_home()
-                rainEmojis("🏨")
-                lottie("https://lottie.host/196ddb8f-8c1e-4fa4-ad54-7475a53ccae1/Pls0SIUzel.json")
-            coffee()
-
-    if tabs == "ChatBot":
-        st.markdown("<h1 style='text-align: center; color: black;'>🤖 Farm AI</h1>", unsafe_allow_html=True)
-        with st.sidebar:
-            if st.button("Secret"):
-                rainEmojis("🤖")
-                bg_sideBar("#cdd67c")
-                add_bg_from_local('./images/ligth color.jpg')
-                lottie("https://lottie.host/94c95a1d-e8e6-44ad-9457-cc03b47bdb6b/Lt1MX4XEEH.json")
-
-        if bg_change:
-            bg_sideBar("#cdd67c")
-            add_bg_from_local('./images/ligth color.jpg')
-        display_chatbot()
-    if tabs == "My Projects":
-        with st.sidebar:
-            if st.button("Secret"):
-                add_bg_from_local('./images/Spotlight.jpg')
-                bg_sideBar("#000000")
-                lottie("https://lottie.host/05ba2cb6-6d ac-4e2b-b18e-dcec8adff357/cN4cpyXRzG.json")
-        if bg_change:
-            add_bg_from_local('./images/Spotlight.jpg')
-            bg_sideBar("#000000")
-
-        myProjects()
-    if tabs == "Project Demonstration":
-        project_Demonstration()
 
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
